@@ -5,14 +5,15 @@ import { useEffect, useState } from "react";
 import axios from 'axios'
 
 const CustomHook = (url) => {
-    const [data, setData] = useState([]);
+   
+  const [data, setData] = useState([]);
 
     useEffect(()=>{
       axios.get(url, {
         // params: {
         //     articleID: articleID
         // }
-    })
+     })
         .then(function (response) {
             
             // console.log('response',response.data);

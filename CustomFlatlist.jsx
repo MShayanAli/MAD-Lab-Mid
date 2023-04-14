@@ -1,34 +1,60 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, FlatList, SectionList, TouchableOpacity,Image } from 'react-native';
 import { useEffect, useState } from "react";
-
+// import { Icon } from 'react-native-vector-icons/icon';
+import CustomButton from './CustomButton';
 import axios from 'axios'
 
 export default function CustomFlatlist (props){
-    const [state2 , setdata] = useState(props.data1)
-    // console.log(props.data1)
+    //const num =2
+    //console.log(props.data1)
     // console.log(state2)
    return(
   <FlatList
         data={props.data1}
         keyExtractor={item => item.id}
+        //numColumns={2}
         renderItem={({item}) => 
           (
-            <View style={{flex:1,flexDirection:"row",marginTop:5}}>
-              <View style={{flex:0.2, backgroundColor:'white',}}>
+            <View style={styles.mainview}>
+              <View style={styles.iview}>
                     <Image source={{uri:item.image}}
-                    style={{ width: 75, height: 100 }}>
+                    style={styles.istyles}>
                     </Image>
                 </View>
-               <View style={{flex:0.8, backgroundColor:'white',}}>
-                  <Text style={{fontSize:10,fontWeight:"bold"}}>Title:{item.title}</Text>
-                  <Text style={{fontSize:10,fontWeight:"bold"}}>Price:{item.price}</Text>
-                  <Text style={{fontSize:10,fontWeight:"bold"}}>Description:{item.description}</Text>
-                  <Text style={{fontSize:10,fontWeight:"bold"}}>Category:{item.category}</Text>
-               </View>        
+               <View style={styles.tview}>
+                  <Text style={styles.tstyles}>{item.title}</Text>
+                  <Text style={styles.tstyles}>{item.price}</Text>
+               </View> 
+               <CustomButton shayan="Buy Now">
+               </CustomButton>       
+
          </View>
           )
         }  
       />
     )
 }
+const styles = StyleSheet.create({
+  mainview: {
+    flex:1,
+    marginTop:5,
+    alignItems:"center",
+  },
+  iview:{
+    flex:0.7,
+    backgroundColor:'white',
+  },
+  istyles:{
+    width: 75,
+    height: 100,
+  },
+  tview:{
+    flex:0.3,
+    backgroundColor:'white'
+  },
+  tstyles:{
+    fontSize:10,
+    textAlign:"center"
+  }
+})

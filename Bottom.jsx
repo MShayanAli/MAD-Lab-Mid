@@ -6,30 +6,20 @@ import CustomButton from './CustomButton';
 import CustomFlatlist from './CustomFlatlist';
 import CustomHook from './CustomHook';
 import CustomSectionlist from './CustomSectionlist';
-import Top from './Top';
-import Bottom from './Bottom';
 
 import axios from 'axios'
 
-export default function App() {
-  const {data} = CustomHook('https://fakestoreapi.com/products')
-  
-  return (
-    
-    <View style={styles.container}>
-      <Top data1={data}/>    
-      <Bottom data2={data}/>
-  
-    </View>
-  );
+export default function Bottom(props){
+return(
+    <View  style={styles.flat2}>
+    <CustomFlatlist data1={props.data2}/> 
+    </View> 
+)
 }
-
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    marginTop:100,
-    //flexDirection:"row",
-    alignItems:"center",
-  },
-});
+ 
+    flat2:{
+      flex:0.5,
+      paddingTop:5
+    }
+  });
